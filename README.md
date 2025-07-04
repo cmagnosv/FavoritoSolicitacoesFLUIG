@@ -20,5 +20,5 @@ Segue dica para colocar um botão que habilita/desabilitar uma solicitação par
 1. o formulário deve ter os seguintes campos para que funcione bem:
   1.1 _"codProcesso"_  => este deve guardar o número da solicitação, pois a principio este número fica apenas no ambiente de processo, para capturar o número da solitação:
    1.1.1 em script de processo _"afterTaskSave"_ poderia usar este codigo:
-   	~~~if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
+   	~~~if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) <br>
 		~~{hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));}
