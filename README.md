@@ -132,10 +132,11 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 					document.getElementById('id_favorito').innerHTML =mensagem; // atualiza o botão
 				}
 			});
-	}
-~~~
+~~~	}
+
 
 6. No formulário colocar um botão:
+
    ~~hmtl
    <button id="id_favorito" onclick="gravar_favorito()"></button>
 
