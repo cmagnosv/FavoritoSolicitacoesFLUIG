@@ -66,7 +66,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 			}
 			document.getElementById('id_favorito').innerHTML =mensagem; // escreve o resultado no botão
 	};
-
+~~~
 
 5. função _JavaScript_ que insere/atualiza a solicitação em favoritos:
   ~~~javascript
@@ -133,7 +133,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 				}
 			});
 	}
-
+~~~
 
 6. No formulário colocar um botão:
    ~~hmtl
