@@ -30,5 +30,76 @@ Segue dica para colocar um botão que habilita/desabilitar uma solicitação par
    ~~~hmtl
    <button id="id_favorito" onclick="gravar_favorito()"></button>
 
+3. função _JavaScript_ que executa o botão:
+  ~~~javascript
+	function gravar_favorito(){
+		console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ALTERANDO/INSERINDO ");
+		//if(document.getElementById("novo_cadastro").value=='S'){
+		if(this.novo_cadastro=='S'){
+			console.log("FAVORITOS: NÃO EXISTE, INSERINDO");
+			situacao='1';
+			var tipo="POST";
+			var link = '/ecm-forms/api/v2/cardindex/'+this.codigodoformulario+'/cards';
+			mensagem = "<i class='flaticon flaticon-star-active icon-xl' placeholder='Clique aqui para remover esta solicitação dos seus favoritos' aria-hidden='true'>Favoritado</i>"
+			//document.getElementById("novo_cadastro").value='N';
+			this.novo_cadastro='N';
+		}else{
 
-asda
+			console.log("FAVORITOS: EXISTE, ALTERANDO STATUS");
+			//if(document.getElementById("opcao").value=='A'){
+			if(this.opcao=='A'){
+				console.log("FAVORITOS: INATIVANDO ");
+				situacao='2';
+				mensagem ="<i class='flaticon flaticon-star icon-xl' placeholder='Clique aqui para inserir esta solicitação aos seus favoritos' aria-hidden='true'>Favoritar</i>"
+			}else{
+				console.log("FAVORITOS: ATIVANDO ");
+				situacao='1';
+				mensagem ="<i class='flaticon flaticon-star-active icon-xl' placeholder='Clique aqui para remover esta solicitação dos seus favoritos' aria-hidden='true'>Favoritado</i>"
+			}
+			
+			var tipo="PUT";
+			var link = '/ecm-forms/api/v2/cardindex/'+this.codigodoformulario+'/cards/'+this.codigo_ficha;
+			
+				}
+				
+		var agora = moment(new Date(), "DD/MM/YYYY", "pt", true); 
+		var objetivo = agora.format("DD/MM/YYYY HH:mm")+' Cod.: '+	document.getElementById("codProcesso").value +', Interessado.: '+ document.getElementById("interessado").value +', Assunto.: ' + 	document.getElementById("Assunto").value;
+		console.log("FAVORITOS: GERANDO OBJETIVO: "+objetivo+", CODPROCESSO:"+codprocesso+", "+document.getElementById("userLogado").value+", idunidade: "+document.getElementById("unidadeLogado").value);
+		console.log("FAVORITOS: idusuariofluig: "+document.getElementById("usuarioTarefa").value+", usuario_fluig: "+document.getElementById("userLogado").value);
+		var dados={
+	    		"values": [
+    				{"fieldId": "usuario_fluig",
+    				"value": document.getElementById("userLogado").value},
+					{"fieldId": "id_usuario_fluig",
+    				"value": usuario_logado},
+                    {"fieldId": "id_unidade",
+    				"value": document.getElementById("unidadeLogado").value},
+                    {"fieldId": "login",
+    				"value": document.getElementById("userLogado").value},
+                    {"fieldId": "cod_fluig",
+    				"value": this.codprocesso},
+                    {"fieldId": "objetivo",
+    				"value": objetivo},
+					{"fieldId": "situacao",
+    				"value": situacao}
+    			]}
+console.log("FAVORITOS: dados: "+dados);
+console.log("FAVORITOS: tipo: "+tipo);
+console.log("FAVORITOS: link: "+link);
+
+
+			parent.WCMAPI.Read({
+				type: tipo,
+				async: true,
+				url: link,
+				contentType: "application/json",
+				dataType: "json",
+				data: JSON.stringify(dados),
+				success: function(data){
+					// código a ser executado em caso de sucesso
+					//alert("Dados gravados: "+$("#usuario_fluig").val());
+					//alert(mensagem);
+					document.getElementById('id_favorito').innerHTML =mensagem;
+				}
+			});
+	}
