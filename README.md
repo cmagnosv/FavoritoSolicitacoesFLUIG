@@ -67,8 +67,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 	};
 
 5. função _JavaScript_ que insere/atualiza a solicitação em favoritos:<br>
-~~~~
-   ~~~javascript
+~~~~javascript
 	function gravar_favorito(){
 		console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ALTERANDO/INSERINDO ");
 		if(this.novo_cadastro=='S'){ // indica novo cadastro, inserir em favoritos
@@ -132,10 +131,10 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 				}
 			});
 	}
-~~~
+~~~~
 
 6. No formulário colocar um botão:
-   ~~~hmtl
+   ~~~~hmtl
    <button id="id_favorito" onclick="gravar_favorito()"></button>
 ~~~~
 
