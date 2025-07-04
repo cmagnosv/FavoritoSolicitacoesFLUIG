@@ -142,7 +142,6 @@ function favoritos(){
 
 ### IMPLEMENTAÇÃO NOS PROCESSOS
 
-Segue dica para colocar um botão que habilita/desabilitar uma solicitação para se favoritado.
 1. Em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
 ~~~~javascript
 		if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
