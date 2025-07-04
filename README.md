@@ -14,7 +14,11 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 
 4 - Criar uma pagina com dois espaços para adiconar as duas widgets, sugestão: colocar a widget de adicionar no primeiro espaço e no segundo colocar a widget de listar;<br>
 
+### IMPLEMENTAÇÃO NOS PROCESSOS
 
-
-
-
+Segue dica para colocar um botão que habilita/desabilitar uma solicitação para se favoritado.
+1. o formulário deve ter os seguintes campos para que funcione bem:
+  1.1 _"codProcesso"_  => este deve guardar o número da solicitação, pois a principio este número fica apenas no ambiente de processo, para capturar o número da solitação:
+   1.1.1 em script de processo _"afterTaskSave"_ poderia usar este codigo:
+   	~~~if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
+		~~{hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));}
