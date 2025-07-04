@@ -17,13 +17,17 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 ### IMPLEMENTAÇÃO NOS PROCESSOS
 
 Segue dica para colocar um botão que habilita/desabilitar uma solicitação para se favoritado.
-1. o formulário deve ter os seguintes campos para que funcione bem:<br>
+1. O formulário deve ter os seguintes campos para que funcione bem:<br>
   1.1 _"codProcesso"_  => este deve guardar o número da solicitação, pois a principio este número fica apenas no ambiente de processo, para capturar o número da solitação:
-   1.1.1 em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
+   1.1.1 Em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
    	~~~javascript
     	  if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
 		{
 		hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));
     		}
 
-fim
+2. No formulário colocar um botão:
+   ~~~hmtl
+   <button id="id_favorito" onclick="gravar_favorito()"></button>
+
+   ssds
