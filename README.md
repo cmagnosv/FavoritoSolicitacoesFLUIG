@@ -24,7 +24,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 ~~~
 3. _JavaScript_ que carrega as variaveis que serão usadas:
  ~~~
-   var codigodoformulario = '501799'; // codigo do formulário citado acima, o formuçário de favoritos que gera o dataset
+var codigodoformulario = '501799'; // codigo do formulário citado acima, o formuçário de favoritos que gera o dataset
 var situacao='1'; // padrão para ativo
 var mensagem = '';
 var usuario_logado = parent.WCMAPI.getUserCode(); //captura usuário logado
@@ -38,33 +38,33 @@ favoritos(); // carrega a consulta para ver se esta solicitação já esta favor
 4. função _JavaScript_ que verifica se a solicitação já esta favoritada:
 ~~~
 function favoritos(){
-console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ");
-var constraintProcessos_favoritos1 = DatasetFactory.createConstraint('id_usuario_fluig', this.usuario_logado, this.usuario_logado, ConstraintType.MUST); // pega o usuário logado para pegar a apenas a lista dele de favoritos
-var constraintProcessos_favoritos2 = DatasetFactory.createConstraint('cod_fluig', codprocesso, codprocesso, ConstraintType.MUST); // leva o codigo da solicitação para saber se a mesma já esta favoritada
-var constraintProcessos_favoritos3 = DatasetFactory.createConstraint('metadata#active', 'true', 'true', ConstraintType.MUST); // PEGA A ultima versão da ficha
-var colunasProcessos_favoritos = new Array('cod_fluig', 'documentid', 'id_usuario_fluig', 'metadata#active', 'situacao'); // os campos que iremos utilizar da ficha/dataset
-var datasetProcessos_favoritos = DatasetFactory.getDataset('processos_favoritos', colunasProcessos_favoritos, new Array(constraintProcessos_favoritos1, constraintProcessos_favoritos2, constraintProcessos_favoritos3), null); //chamada do dataset
-if (!datasetProcessos_favoritos || datasetProcessos_favoritos.values.length === 0){ // ver se esta vazio
-console.log("FAVORITOS: NÃO EXISTE REGISTRO, opção: "+this.opcao+', novo_cadstro: '+this.novo_cadastro);
-mensagem ="<i class='flaticon flaticon-star icon-xl' placeholder='Clique aqui para inserir esta solicitação aos seus favoritos' aria-hidden='true'>Favoritar</i>" // variavel que vai manipular o botão
-else{ // encontrou a solicitação do usuário como faloritado
-var favorito = datasetProcessos_favoritos.values[0]; 
-console.log("FAVORITOS: EXISTE REGISTRO CODIGO DA FICHA: "+favorito["documentid"]);
-if(favorito["situacao"]=='1'){ // se a mesma estiver ativa
-this.opcao = 'A'; // habilita para alteração 
-console.log("FAVORITOS: REGISTRO ESTA ATIVO, opção: "+this.opcao);
-mensagem ="<i class='flaticon flaticon-star-active icon-xl' placeholder='Clique aqui para retirar esta solicitação dos seus favoritos' aria-hidden='true'>Favoritado</i>" // botão favoritado
-}else{
-this.opcao = 'I'; // existe, mas esta inativo
-console.log("FAVORITOS: REGISTRO ESTA INATIVO, opção: "+this.opcao);
-mensagem ="<i class='flaticon flaticon-star icon-xl' placeholder='Clique aqui para inserir esta solicitação aos seus favoritos' aria-hidden='true'>Favoritar</i>" // botão favoritar ? 
-}
-this.novo_cadastro = 'N'; // indica que existe registro de favoritos, então apenas atualiza
-this.codigo_ficha = favorito["documentid"]; // pega a o cadastro da solicitação
-this.codigo = favorito["cod_fluig"]; // pega o numero da solicitação
-console.log("FAVORITOS: FIM, novo_cadstro: "+this.novo_cadastro+", codigo_ficha: "+this.codigo_ficha+", codigo: "+this.codigo);
-}
-document.getElementById('id_favorito').innerHTML =mensagem; // escreve o resultado no botão
+	console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ");
+	var constraintProcessos_favoritos1 = DatasetFactory.createConstraint('id_usuario_fluig', this.usuario_logado, this.usuario_logado, ConstraintType.MUST); // pega o usuário logado para pegar a apenas a lista dele de favoritos
+	var constraintProcessos_favoritos2 = DatasetFactory.createConstraint('cod_fluig', codprocesso, codprocesso, ConstraintType.MUST); // leva o codigo da solicitação para saber se a mesma já esta favoritada
+	var constraintProcessos_favoritos3 = DatasetFactory.createConstraint('metadata#active', 'true', 'true', ConstraintType.MUST); // PEGA A ultima versão da ficha
+	var colunasProcessos_favoritos = new Array('cod_fluig', 'documentid', 'id_usuario_fluig', 'metadata#active', 'situacao'); // os campos que iremos utilizar da ficha/dataset
+	var datasetProcessos_favoritos = DatasetFactory.getDataset('processos_favoritos', colunasProcessos_favoritos, new Array(constraintProcessos_favoritos1, constraintProcessos_favoritos2, constraintProcessos_favoritos3), null); //chamada do dataset
+	if (!datasetProcessos_favoritos || datasetProcessos_favoritos.values.length === 0){ // ver se esta vazio
+		console.log("FAVORITOS: NÃO EXISTE REGISTRO, opção: "+this.opcao+', novo_cadstro: '+this.novo_cadastro);
+		mensagem ="<i class='flaticon flaticon-star icon-xl' placeholder='Clique aqui para inserir esta solicitação aos seus favoritos' aria-hidden='true'>Favoritar</i>" // variavel que vai manipular o botão
+	else{ // encontrou a solicitação do usuário como faloritado
+		var favorito = datasetProcessos_favoritos.values[0]; 
+		console.log("FAVORITOS: EXISTE REGISTRO CODIGO DA FICHA: "+favorito["documentid"]);
+		if(favorito["situacao"]=='1'){ // se a mesma estiver ativa
+			this.opcao = 'A'; // habilita para alteração 
+			console.log("FAVORITOS: REGISTRO ESTA ATIVO, opção: "+this.opcao);
+			mensagem ="<i class='flaticon flaticon-star-active icon-xl' placeholder='Clique aqui para retirar esta solicitação dos seus favoritos' aria-hidden='true'>Favoritado</i>" // botão favoritado
+		}else{
+			this.opcao = 'I'; // existe, mas esta inativo
+			console.log("FAVORITOS: REGISTRO ESTA INATIVO, opção: "+this.opcao);
+			mensagem ="<i class='flaticon flaticon-star icon-xl' placeholder='Clique aqui para inserir esta solicitação aos seus favoritos' aria-hidden='true'>Favoritar</i>" // botão favoritar ? 
+			}
+		this.novo_cadastro = 'N'; // indica que existe registro de favoritos, então apenas atualiza
+		this.codigo_ficha = favorito["documentid"]; // pega a o cadastro da solicitação
+		this.codigo = favorito["cod_fluig"]; // pega o numero da solicitação
+		console.log("FAVORITOS: FIM, novo_cadstro: "+this.novo_cadastro+", codigo_ficha: "+this.codigo_ficha+", codigo: "+this.codigo);
+	}
+	document.getElementById('id_favorito').innerHTML =mensagem; // escreve o resultado no botão
 };
 ~~~
 
