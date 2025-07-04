@@ -66,6 +66,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 			document.getElementById('id_favorito').innerHTML =mensagem; // escreve o resultado no botão
 	};
 
+
 5. função _JavaScript_ que insere/atualiza a solicitação em favoritos:<br>
 ~~~~javascript
 	function gravar_favorito(){
@@ -134,7 +135,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 ~~~~
 
 6. No formulário colocar um botão:
-   ~~~~hmtl
+~~~~hmtl
    <button id="id_favorito" onclick="gravar_favorito()"></button>
 ~~~~
 
@@ -142,8 +143,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 
 Segue dica para colocar um botão que habilita/desabilitar uma solicitação para se favoritado.
 1. Em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
-~~~~
- ~~~javascript
+~~~~javascript
 		if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
 			{
 			hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));
