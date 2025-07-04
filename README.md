@@ -22,4 +22,8 @@ Segue dica para colocar um botão que habilita/desabilitar uma solicitação par
    1.1.1 em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
    	~~~javascript
     	  if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
-		{hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));}
+		{
+		hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));
+    		}
+
+fim
