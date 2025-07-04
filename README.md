@@ -19,11 +19,11 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 
 ### IMPLEMENTAÇÃO NO FORMULÁRIO DO PROCESSO
 1. O formulário deve ter o seguinte campo para que funcione bem: _"codProcesso"_  => este deve guardar o número da solicitação, pois a principio este número fica apenas no ambiente de processo, para capturar o número da solitação será feito via script de processo citado mais abaixo, exemplo do _html_:
-~~~
+~~~html
    <input type="hidden" name="codProcesso" id="codProcesso">
 ~~~
 3. _JavaScript_ que carrega as variaveis que serão usadas:
- ~~~
+ ~~~javascript
 var codigodoformulario = '501799'; // codigo do formulário citado acima, o formuçário de favoritos que gera o dataset
 var situacao='1'; // padrão para ativo
 var mensagem = '';
@@ -36,7 +36,7 @@ var codprocesso = document.getElementById("codProcesso").value; // pega o númer
 favoritos(); // carrega a consulta para ver se esta solicitação já esta favoritada
 ~~~
 4. função _JavaScript_ que verifica se a solicitação já esta favoritada:
-~~~
+~~~javascript
 function favoritos(){
 	console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ");
 	var constraintProcessos_favoritos1 = DatasetFactory.createConstraint('id_usuario_fluig', this.usuario_logado, this.usuario_logado, ConstraintType.MUST); // pega o usuário logado para pegar a apenas a lista dele de favoritos
@@ -136,7 +136,7 @@ function favoritos(){
 ~~~~
 
 6. No formulário colocar um botão:
-~~~~
+~~~~html
    <button id="id_favorito" onclick="gravar_favorito()"></button>
 ~~~~
 
