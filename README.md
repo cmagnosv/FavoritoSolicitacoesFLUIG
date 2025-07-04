@@ -33,7 +33,6 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 	var codprocesso = document.getElementById("codProcesso").value; // pega o número da solcitação já gravado do processo
    	favoritos(); // carrega a consulta para ver se esta solicitação já esta favoritada
 
-   
 4. função _JavaScript_ que verifica se a solicitação já esta favoritada:
 	~~~javascript
  	function favoritos(){
@@ -66,9 +65,8 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 			}
 			document.getElementById('id_favorito').innerHTML =mensagem; // escreve o resultado no botão
 	};
-~~~
 
-5. função _JavaScript_ que insere/atualiza a solicitação em favoritos:
+5. função _JavaScript_ que insere/atualiza a solicitação em favoritos:<br>
   ~~~javascript
 	function gravar_favorito(){
 		console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ALTERANDO/INSERINDO ");
@@ -132,11 +130,9 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 					document.getElementById('id_favorito').innerHTML =mensagem; // atualiza o botão
 				}
 			});
-~~~	}
-
+	}
 
 6. No formulário colocar um botão:
-
    ~~hmtl
    <button id="id_favorito" onclick="gravar_favorito()"></button>
 
