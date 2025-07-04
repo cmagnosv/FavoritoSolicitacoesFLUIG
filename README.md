@@ -1,6 +1,6 @@
 # Favoritar qualquer Solicitacão de Processo FLUIG
 
-KIT para criar solução para favoritar solicitações de Processos
+KIT para criar solução para favoritar solicitações de Processos, é uma primeira versão, com certeza é preciso melhorias, por exemplo, habilitar o botão apenas quando ousuário assumir a tarefa
 <br>
 ## PASSO A PASSO
 ### Sobre a solução do ambiente de Favoritos
