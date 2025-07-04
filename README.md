@@ -14,34 +14,22 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 
 4 - Criar uma pagina com dois espaços para adiconar as duas widgets, sugestão: colocar a widget de adicionar no primeiro espaço e no segundo colocar a widget de listar;<br>
 
-### IMPLEMENTAÇÃO NOS PROCESSOS
 
-Segue dica para colocar um botão que habilita/desabilitar uma solicitação para se favoritado.
-1. O formulário deve ter os seguintes campos para que funcione bem:<br>
-  1.1 _"codProcesso"_  => este deve guardar o número da solicitação, pois a principio este número fica apenas no ambiente de processo, para capturar o número da solitação:
-   1.1.1 Em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
-   	~~~javascript
-    	  if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
-		{
-		hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));
-    		}
+### IMPLEMENTAÇÃO NO FORMULÁRIO DO PROCESSO
+1. O formulário deve ter o seguinte campo para que funcione bem: _"codProcesso"_  => este deve guardar o número da solicitação, pois a principio este número fica apenas no ambiente de processo, para capturar o número da solitação:
 
-2. No formulário colocar um botão:
-   ~~~hmtl
-   <button id="id_favorito" onclick="gravar_favorito()"></button>
+2. 
 
 3. função _JavaScript_ que executa o botão:
   ~~~javascript
 	function gravar_favorito(){
 		console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ALTERANDO/INSERINDO ");
-		//if(document.getElementById("novo_cadastro").value=='S'){
 		if(this.novo_cadastro=='S'){
 			console.log("FAVORITOS: NÃO EXISTE, INSERINDO");
 			situacao='1';
 			var tipo="POST";
 			var link = '/ecm-forms/api/v2/cardindex/'+this.codigodoformulario+'/cards';
 			mensagem = "<i class='flaticon flaticon-star-active icon-xl' placeholder='Clique aqui para remover esta solicitação dos seus favoritos' aria-hidden='true'>Favoritado</i>"
-			//document.getElementById("novo_cadastro").value='N';
 			this.novo_cadastro='N';
 		}else{
 
@@ -83,9 +71,9 @@ Segue dica para colocar um botão que habilita/desabilitar uma solicitação par
 					{"fieldId": "situacao",
     				"value": situacao}
     			]}
-console.log("FAVORITOS: dados: "+dados);
-console.log("FAVORITOS: tipo: "+tipo);
-console.log("FAVORITOS: link: "+link);
+	console.log("FAVORITOS: dados: "+dados);
+	console.log("FAVORITOS: tipo: "+tipo);
+	console.log("FAVORITOS: link: "+link);
 
 
 			parent.WCMAPI.Read({
@@ -103,3 +91,18 @@ console.log("FAVORITOS: link: "+link);
 				}
 			});
 	}
+
+3. No formulário colocar um botão:
+   ~~~hmtl
+   <button id="id_favorito" onclick="gravar_favorito()"></button>
+
+
+### IMPLEMENTAÇÃO NOS PROCESSOS
+
+Segue dica para colocar um botão que habilita/desabilitar uma solicitação para se favoritado.
+1. Em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
+	~~~javascript
+		if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
+			{
+			hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));
+			}
