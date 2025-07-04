@@ -135,7 +135,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 	}
 
 3. No formulário colocar um botão:
-   ~~~hmtl
+   ~~hmtl
    <button id="id_favorito" onclick="gravar_favorito()"></button>
 
 
