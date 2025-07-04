@@ -34,7 +34,7 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
    	favoritos(); // carrega a consulta para ver se esta solicitação já esta favoritada
 
 4. função _JavaScript_ que verifica se a solicitação já esta favoritada:
-	~~~javascript
+	~~~~javascript
  	function favoritos(){
 			console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ");
 			var constraintProcessos_favoritos1 = DatasetFactory.createConstraint('id_usuario_fluig', this.usuario_logado, this.usuario_logado, ConstraintType.MUST); // pega o usuário logado para pegar a apenas a lista dele de favoritos
@@ -67,7 +67,8 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 	};
 
 5. função _JavaScript_ que insere/atualiza a solicitação em favoritos:<br>
-  ~~~javascript
+~~~~
+   ~~~javascript
 	function gravar_favorito(){
 		console.log("FAVORITOS: ENTRANDO NA FUNÇÃO ALTERANDO/INSERINDO ");
 		if(this.novo_cadastro=='S'){ // indica novo cadastro, inserir em favoritos
@@ -131,18 +132,21 @@ como modelo segue arquivo: _"forms\frmfavoritos_modelo\frmfavoritos.html"_, nome
 				}
 			});
 	}
+~~~
 
 6. No formulário colocar um botão:
-   ~~hmtl
+   ~~~hmtl
    <button id="id_favorito" onclick="gravar_favorito()"></button>
-
+~~~~
 
 ### IMPLEMENTAÇÃO NOS PROCESSOS
 
 Segue dica para colocar um botão que habilita/desabilitar uma solicitação para se favoritado.
 1. Em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
-	~~~javascript
+~~~~
+ ~~~javascript
 		if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
 			{
 			hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));
 			}
+~~~~
