@@ -137,15 +137,15 @@ function favoritos(){
 
 6. No formulário colocar um botão:
 ~~~~html
-   <button id="id_favorito" onclick="gravar_favorito()"></button>
+<button id="id_favorito" onclick="gravar_favorito()"></button>
 ~~~~
 
 ### IMPLEMENTAÇÃO NOS PROCESSOS
 
 1. Em script de processo _"afterTaskSave"_ poderia usar este codigo:<br>
 ~~~~javascript
-		if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
-			{
-			hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));
-			}
+if (hAPI.getCardValue('codProcesso')  == undefined || hAPI.getCardValue('codProcesso')  == '' ) 
+	{
+		hAPI.setCardValue('hAPI.getCardValue('codProcesso')',getValue("WKNumProces"));
+	}
 ~~~~
